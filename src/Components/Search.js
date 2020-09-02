@@ -4,7 +4,11 @@ class Search extends Component {
     render() {
         return (
             <div>
-                search
+              <input  type="text"
+                      placeholder={"Search for ingredients"}
+                      onChange={event => {this.props.searchHandler(event)
+                     }}
+              />
             </div>
         );
     }

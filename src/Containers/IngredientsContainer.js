@@ -7,7 +7,7 @@ class IngredientsContainer extends Component {
     render() {
         return (
             <div>
-              <Search/>  
+              <Search searchHandler = {this.props.searchHandler}/>  
               <IngredientsList/>
             </div>
         );

@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Ingredient from './Ingredient'
+import Ingredients from './Ingredient';
+
+
 class IngredientsList extends Component {
     render() {
         return (
             <div>
-                <Ingredient/>
+                 <Ingredients />
             </div>
         );
     }
