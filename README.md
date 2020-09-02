@@ -1,3 +1,26 @@
+ componentDidMount(){
+   
+           fetch(" https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=81b17e72c9484724a29239484ef6b188&query=a&number=20")
+
+   
+     .then(response => response.json())
+     .then( resp => {}
+  }
+  render(){
+  return (
+    <div>
+app
+
+
+    </div>
+  );
+}
+
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
