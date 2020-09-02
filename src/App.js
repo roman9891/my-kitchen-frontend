@@ -15,6 +15,8 @@ class App extends React.Component {
          search: event.target.value
       })
       console.log(this.state)
+
+
  }
 
   render(){
