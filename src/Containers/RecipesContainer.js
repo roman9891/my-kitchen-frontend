@@ -15,7 +15,7 @@ class RecipesContainer extends Component {
 
         searchArray.forEach(term => ingredientsString += `${term},+`)
 
-        console.log(ingredientsString.slice(0,-2))
+        //console.log(ingredientsString.slice(0,-2))
 
         return ingredientsString.slice(0,-2)
     }
@@ -23,7 +23,7 @@ class RecipesContainer extends Component {
     fetchRecipes = () => {
         fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(searchTerms)}`)
         .then(r => r.json())
-        .then(console.log)
+       // .then(console.log)
     }
 
     componentDidUpdate() {
@@ -31,7 +31,7 @@ class RecipesContainer extends Component {
     }
     
     render() {
-        console.log(this.convertToString(searchTerms))
+        //console.log(this.convertToString(searchTerms))
         return (
             <div>
                 <RecipesList recipes={this.state.recipes}/>
