@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import Ingredients from './Ingredient';
+import Ingredient from './Ingredient';
 
 
 class IngredientsList extends Component {
+
     render() {
+
+   let ingredients = () => this.props.ingredientsList.map((ing) =><li><Ingredient /></li> )
+
         return (
-            <div>
-                 <Ingredients />
-            </div>
+            <ul>
+              {ingredients}   
+            </ul>
         );
     }
 }
