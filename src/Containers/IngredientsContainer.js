@@ -27,7 +27,7 @@ class IngredientsContainer extends Component {
         return (
             <div>
               <Search searchHandler = {this.searchHandler}/>  
-              <IngredientsList ingredients = {this.state.resultsArray}/>
+              <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/>
             </div>
         );
     }

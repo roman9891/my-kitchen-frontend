@@ -15,19 +15,20 @@ class RecipesContainer extends Component {
 
         searchArray.forEach(term => ingredientsString += `${term},+`)
 
-        console.log(ingredientsString.slice(0,-2))
-
         return ingredientsString.slice(0,-2)
     }
 
     fetchRecipes = () => {
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(searchTerms)}`)
+        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(this.props.searchTerms)}`)
         .then(r => r.json())
-        .then(console.log)
+        .then(recipes => this.setState({recipes: recipes}))
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         //fetchRecipes()
+        if (this.state.props !== prevProps) {
+            this.fetchRecipes()
+        }
     }
     
     render() {

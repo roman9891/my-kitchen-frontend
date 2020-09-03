@@ -1,12 +1,19 @@
 import React, { Component } from 'react';
 
 class Ingredient extends Component {
+    state = {
+        clicked: false
+    }
+    clickHandler = (e) => {
+        this.setState({clicked: true})
+        this.props.appHandler(this.props.ingredient.name)
+    }
+    
     render() {
-        console.log(this.props.ingredient)
         return (
             <div>
                 <p>{this.props.ingredient.name}</p>
-                <button>use </button>
+                <button onClick={this.clickHandler}>use</button>
             </div>
         );
     }
