@@ -31,7 +31,7 @@ class RecipesContainer extends Component {
     }
     
     render() {
-        console.log(this.convertToString(searchTerms))
+        //console.log(this.convertToString(searchTerms))
         return (
             <div>
                 <RecipesList recipes={this.state.recipes}/>

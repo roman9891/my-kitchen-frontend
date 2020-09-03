@@ -21,7 +21,7 @@ class App extends React.Component {
   render(){
     return(
     <div>
-      <IngredientsContainer searchHandler = {this.searchHandler} />
+      <IngredientsContainer search={this.state.search} searchHandler = {this.searchHandler} />
       <RecipesContainer/>
     </div>
     )
