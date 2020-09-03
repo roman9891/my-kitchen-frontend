@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
 class Recipe extends Component {
-    render() {
-        console.log(this.props.recipe.title)
+    render() {  
         return (
             <div>
                 <p>{this.props.recipe.title}</p>

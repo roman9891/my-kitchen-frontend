@@ -7,15 +7,15 @@ class IngredientsContainer extends Component {
 
     state = {
         searchTerm: ``,
-        resultsArray: []//[{id: 1, title: `apple`}]
+        resultsArray: []
     }
 
     searchHandler = event =>{ 
         this.setState({
            searchTerm: event.target.value
-        })
+        }, this.fetchIngredients)
    }
-    
+
     fetchIngredients = () => {
         fetch(`https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=81b17e72c9484724a29239484ef6b188&query=${this.state.searchTerm}`)
         .then(r => r.json())
@@ -24,14 +24,10 @@ class IngredientsContainer extends Component {
     
 
     render() {
-        //this.fetchIngredients()
         return (
             <div>
-
               <Search searchHandler = {this.searchHandler}/>  
-              <IngredientsList ingredientsList = {this.state.ingredientsList}/>
-
-
+              <IngredientsList ingredients = {this.state.resultsArray}/>
             </div>
         );
     }
