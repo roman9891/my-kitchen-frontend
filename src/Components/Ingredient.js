@@ -4,7 +4,8 @@ class Ingredient extends Component {
     render() {
         return (
             <div>
-            Ingredient
+                <p>{this.props.ingredient.title}</p>
+                <button>save</button>
             </div>
         );
     }
