@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import IngredientsContainer from "./Containers/IngredientsContainer";
 import RecipesContainer from "./Containers/RecipesContainer";
@@ -24,7 +23,6 @@ class App extends React.Component {
     <div>
       <IngredientsContainer searchHandler = {this.searchHandler} />
       <RecipesContainer/>
-     
     </div>
     )
       

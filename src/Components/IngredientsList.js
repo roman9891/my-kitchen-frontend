@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import Ingredients from './Ingredient';
+import Ingredient from './Ingredient';
 
 
 class IngredientsList extends Component {
+    renderIngredients = () => this.props.ingredients
+    .map(ingredient => <Ingredient key={ingredient.id} ingredient={ingredient}/>)
+    
     render() {
         return (
             <div>
-                 <Ingredients />
+                {this.renderIngredients()}
             </div>
         );
     }
