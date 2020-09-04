@@ -5,7 +5,7 @@ import Ingredient from './Ingredient';
 class IngredientsList extends Component {
 
     renderIngredients = () => this.props.ingredients
-    .map(ingredient => <Ingredient key={ingredient.id} ingredient={ingredient}/>)
+    .map((ingredient, i) => <Ingredient key={i} ingredient={ingredient}/>)
     
     render() {
 
