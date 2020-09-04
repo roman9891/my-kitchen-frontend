@@ -13,10 +13,10 @@ class App extends React.Component {
 
   render(){
     return(
-    <div>
-      <IngredientsContainer  appHandler={this.appHandler}/>
-      <RecipesContainer searchTerms={this.state.recipeSearch}/>
-    </div>
+      <div id='app'>
+        <IngredientsContainer  appHandler={this.appHandler}/>
+        <RecipesContainer searchTerms={this.state.recipeSearch}/>
+      </div>
     )
       
  }

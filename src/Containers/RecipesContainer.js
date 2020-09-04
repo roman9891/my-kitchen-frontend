@@ -34,7 +34,7 @@ class RecipesContainer extends Component {
     render() {
         //console.log(this.convertToString(searchTerms))
         return (
-            <div>
+            <div id='recipe-container'>
                 <RecipesList recipes={this.state.recipes}/>
             </div>
         );

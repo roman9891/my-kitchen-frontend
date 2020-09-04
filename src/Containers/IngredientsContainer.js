@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import Search from  "../Components/Search";
 import IngredientsList from "../Components/IngredientsList";
 
+const fakeData = [{name: `apple`}, {name: `apple sauce`}, {name: `???`}, {name: `stuff`}]
 
 class IngredientsContainer extends Component {
 
     state = {
         searchTerm: ``,
-        resultsArray: []
+        resultsArray: fakeData
     }
 
     searchHandler = event =>{ 
