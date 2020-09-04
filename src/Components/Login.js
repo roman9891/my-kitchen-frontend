@@ -30,9 +30,10 @@ class Login extends Component {
   }
 
     render() {
+      const styleObj= {width: "10%"}
         
         return (
-            <div>
+            <div style={styleObj}>
               <h1> Log in</h1>
            <form onSubmit = {event => this.loginHandler(event)}>
               <label>User name:</label>
