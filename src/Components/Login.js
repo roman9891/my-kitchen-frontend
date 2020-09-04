@@ -1,10 +1,30 @@
 import React, { Component } from 'react';
+import Profile from "./Profile"
 
 class Login extends Component {
+  state={
+    token:""
+  }
 
   loginHandler = event => {event.preventDefault(); 
-    //need to finish: diplay user Component with Favorite component somewhere
-
+    let options = { method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+                },
+                body: JSON.stringify({
+                      user:  {username: event.target[0].value,
+                             password: event.target[1].value,
+                             }
+                })
+    }
+        
+  fetch('http://localhost:4000/api/v1/login', options)  // got toket in response !
+  .then(response => response.json())
+  .then(response => { this.setState({token: response.jwt
+                                   }) 
+                    }
+       )             
   }
 
   signUpHandler = event => { event.preventDefault();
@@ -24,22 +44,22 @@ class Login extends Component {
         
   fetch('http://localhost:4000/api/v1/users', options)
   .then(response => response.json())
+  window.alert("Thank you for signing up!")
   
-  //need to finish: Printout welcome message
-  // need to finish: diplay user Component with Favorite component somewhere
   }
 
     render() {
       const styleObj= {width: "10%"}
         
         return (
+          
             <div style={styleObj}>
               <h1> Log in</h1>
            <form onSubmit = {event => this.loginHandler(event)}>
               <label>User name:</label>
               <input type="text"  name="username"></input> 
               <label>Password:</label>
-              <input type="text"  name="password"></input>
+              <input type="password"  name="password"></input>
               <input type="submit" value="Submit"></input>
            </form> <br></br>
 
@@ -48,13 +68,15 @@ class Login extends Component {
               <label>User name:</label>
               <input type="text"  name="username"></input> 
               <label>Password:</label>
-              <input type="text"  name="password"></input>
+              <input type="password"  name="password"></input>
               <label>Avatar:</label>
               <input type="text"  name="avatar"></input>
               <input type="submit" value="Submit"></input>
            </form> <br></br>
+           <Profile token = {this.state.token}/>
             </div>
-        );
+            
+        )
     }
 }
 
