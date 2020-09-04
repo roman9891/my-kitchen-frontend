@@ -21,7 +21,6 @@ cklickHandler = () => { let clicked = this.state.clicked
 
     return(
     <div>
-     
       <button  onClick={this.cklickHandler}>Log In/Sign Up</button> 
       {this.state.clicked? <div><Login/></div> : null }
       <IngredientsContainer  appHandler={this.appHandler}/>
