@@ -2,7 +2,20 @@ import React, { Component } from 'react';
 import Search from  "../Components/Search";
 import IngredientsList from "../Components/IngredientsList";
 
-
+const ingredientsSeeds = [
+    {
+        id: 0,
+        name: `apple`
+    },
+    {
+        id: 1,
+        name: `egg`
+    },
+    {
+        id: 2,
+        name: `milk`
+    }
+]
 class IngredientsContainer extends Component {
 
     state = {
@@ -25,9 +38,10 @@ class IngredientsContainer extends Component {
 
     render() {
         return (
-            <div>
-              <Search searchHandler = {this.searchHandler}/>  
-              <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/>
+            <div id='ingredients-container'>
+              <Search searchHandler = {this.searchHandler}/>
+              <IngredientsList appHandler={this.props.appHandler} ingredients = {ingredientsSeeds}/>  
+              {/* <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/> */}
             </div>
         );
     }

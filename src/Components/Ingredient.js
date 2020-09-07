@@ -11,7 +11,7 @@ class Ingredient extends Component {
     
     render() {
         return (
-            <div>
+            <div className='ingredient'>
                 <p>{this.props.ingredient.name}</p>
                 <button onClick={this.clickHandler}>use</button>
             </div>

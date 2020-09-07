@@ -32,7 +32,7 @@ class Recipe extends Component {
         const styleObj= {'color': 'blue'}
 
         return (
-            <div style={this.state.clicked ? styleObj : null}>
+            <div className='recipe' style={this.state.clicked ? styleObj : null}>
                 <p>{this.props.recipe.title}</p>
                 <button onClick={this.clickHandler}>Like</button>
                 <button>Instructions</button>

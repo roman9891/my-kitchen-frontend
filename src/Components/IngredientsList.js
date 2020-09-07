@@ -11,7 +11,7 @@ class IngredientsList extends Component {
 
 
         return (
-            <div>
+            <div id='ingredients-list'>
                 {this.renderIngredients()}
             </div>
 

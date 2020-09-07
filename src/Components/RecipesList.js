@@ -6,7 +6,7 @@ class RecipesList extends Component {
     
     render() {
         return (
-            <div>
+            <div id='recipes-list'>
                 {this.renderRecipes()}
             </div>
         );

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import RecipesList from "../Components/RecipesList"
 
-const searchTerms = [`apple`, `eggs`, `flour`, `rice`]
+//const searchTerms = [`apple`, `eggs`, `flour`, `rice`]
+let renderCount = 0
 
 class RecipesContainer extends Component {
     state = {
@@ -25,16 +26,16 @@ class RecipesContainer extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        //fetchRecipes()
         if (this.state.props !== prevProps) {
             this.fetchRecipes()
         }
     }
     
     render() {
-        //console.log(this.convertToString(searchTerms))
+        console.log(`rendered :`, renderCount += 1)
         return (
-            <div>
+            <div id='recipes-container'>
+                <p>Recipes</p>
                 <RecipesList recipes={this.state.recipes}/>
             </div>
         );

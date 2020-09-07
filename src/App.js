@@ -3,6 +3,7 @@ import './App.css';
 import IngredientsContainer from "./Containers/IngredientsContainer";
 import RecipesContainer from "./Containers/RecipesContainer";
 import Login from "./Components/Login"
+import Header from "./Components/Header"
 
 class App extends React.Component {
   state = {
@@ -13,18 +14,23 @@ class App extends React.Component {
     this.setState({recipeSearch: [...this.state.recipeSearch, ingredient]}, () => console.log(this.state))
   }
 
-cklickHandler = () => { let clicked = this.state.clicked
-                        this.setState({clicked: !clicked})
-  
-}
+  clickHandler = () => { 
+    let clicked = this.state.clicked
+    this.setState({clicked: !clicked})
+  }
   render(){
 
     return(
-    <div>
-      <button  onClick={this.cklickHandler}>Log In/Sign Up</button> 
+    <div id='app'>
+      <button  onClick={this.clickHandler}>Log In/Sign Up</button> 
       {this.state.clicked? <div><Login/></div> : null }
-      <IngredientsContainer  appHandler={this.appHandler}/>
-      <RecipesContainer searchTerms={this.state.recipeSearch}/>
+      <div>
+        <Header/>
+        <div id='app-containers'>
+          <IngredientsContainer appHandler={this.appHandler}/>
+          <RecipesContainer searchTerms={this.state.recipeSearch}/>
+        </div>
+      </div>
     </div>
     )
       
