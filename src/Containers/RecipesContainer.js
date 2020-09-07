@@ -25,11 +25,11 @@ class RecipesContainer extends Component {
         .then(recipes => this.setState({recipes: recipes}))
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.state.props !== prevProps) {
-            this.fetchRecipes()
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.state.props !== prevProps) {
+    //         this.fetchRecipes()
+    //     }
+    // }
     
     render() {
         console.log(`rendered :`, renderCount += 1)

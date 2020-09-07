@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from  "../Components/Search";
 import IngredientsList from "../Components/IngredientsList";
+import UsedList from '../Components/UsedList'
 
 const ingredientsSeeds = [
     {
@@ -40,7 +41,8 @@ class IngredientsContainer extends Component {
         return (
             <div id='ingredients-container'>
               <Search searchHandler = {this.searchHandler}/>
-              <IngredientsList appHandler={this.props.appHandler} ingredients = {ingredientsSeeds}/>  
+              <IngredientsList appHandler={this.props.appHandler} ingredients = {ingredientsSeeds}/>
+              <UsedList removeHandler={this.props.removeHandler} usedItems={this.props.searchTerms}/>  
               {/* <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/> */}
             </div>
         );

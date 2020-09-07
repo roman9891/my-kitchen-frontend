@@ -7,17 +7,29 @@ import Header from "./Components/Header"
 
 class App extends React.Component {
   state = {
-    recipeSearch: [],
+    recipeSet: new Set(),
+    recipeArray: [],
     clicked: false
   }
   appHandler = (ingredient) => {
-    this.setState({recipeSearch: [...this.state.recipeSearch, ingredient]}, () => console.log(this.state))
+    this.setState({
+      recipeSet: this.state.recipeSet.add(ingredient),
+      recipeArray: Array.from(this.state.recipeSet)
+    }, () => console.log(this.state))
   }
 
   clickHandler = () => { 
     let clicked = this.state.clicked
     this.setState({clicked: !clicked})
   }
+
+  removeHandler = (item) => {
+    this.state.recipeSet.delete(item)
+    this.setState({
+      recipeArray: Array.from(this.state.recipeSet)
+    }, () => console.log(this.state))
+  }
+
   render(){
 
     return(
@@ -27,8 +39,8 @@ class App extends React.Component {
       <div>
         <Header/>
         <div id='app-containers'>
-          <IngredientsContainer appHandler={this.appHandler}/>
-          <RecipesContainer searchTerms={this.state.recipeSearch}/>
+          <IngredientsContainer removeHandler={this.removeHandler} appHandler={this.appHandler} searchTerms={this.state.recipeArray}/>
+          <RecipesContainer searchTerms={this.state.recipeArray}/>
         </div>
       </div>
     </div>
