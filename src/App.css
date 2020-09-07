@@ -13,3 +13,10 @@ div {
 #recipes-container {
   width: 50%;
 }
+#login-component {
+  width: 20%
+}
+
+#invalid {
+  color: red
+}
