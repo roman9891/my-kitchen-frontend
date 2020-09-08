@@ -20,3 +20,12 @@ div {
 #invalid {
   color: red
 }
+
+#avatar {
+  width: 10%;
+  height: 10%;
+}
+
+ a:hover:not(.active)  {
+  color: blue;
+} 

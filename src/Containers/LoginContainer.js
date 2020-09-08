@@ -29,7 +29,7 @@ class LoginContainer extends Component {
       }
     render() {
         if (this.state.response.user)  {
-            return (<Fragment> <App/> </Fragment>
+            return (<Fragment> <App user = {this.state.response}/> </Fragment>
         )}
         if (this.state.response.message)  {
             return ( 
