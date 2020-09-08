@@ -50,7 +50,8 @@ class App extends React.Component {
                   <IngredientsContainer removeHandler={this.removeHandler} 
                                         appHandler={this.appHandler} 
                                         searchTerms={this.state.recipeArray}/>
-                  <RecipesContainer searchTerms={this.state.recipeArray}/>
+                  <RecipesContainer searchTerms={this.state.recipeArray}
+                                    user={this.props.user}/>
                   </div> 
                 }/>      
           </Router> 

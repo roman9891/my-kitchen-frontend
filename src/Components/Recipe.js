@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const url = `` //locahost:4000/users/??
-const id = `` //obtained from token??
+ const url = "http://localhost:4000/api/v1/users/"
+//  const id = this.props.user.user.id   # I moved this on line 17, because props are not defined outside of Recipe class
 
 class Recipe extends Component {
     state = {
@@ -11,19 +11,24 @@ class Recipe extends Component {
     clickHandler = () => {
         console.log(`clicked`)
         this.setState({clicked: true}, () => console.log(this.state))
-        //this.postFavoriteRecipe()
+        this.postFavoriteRecipe()
     }
 
     postFavoriteRecipe = () => {
+        
+     const id = this.props.user.user.id
+    
         const config = {
             method: `POST`,
-            headers: {},
-            body: JSON.stringify(this.props.recipe)
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json'
+                },
+            body: JSON.stringify({favorites: this.props.recipe.title})
         }
-
-        fetch(`${url}${id}`, config)
+        fetch(url+id, config)
         .then(r => r.json())
-        .then(console.log)
+        .then( console.log())
     }
 
 
@@ -31,7 +36,7 @@ class Recipe extends Component {
 
         const styleObj= {'color': 'blue'}
 
-        return (
+        return ( 
             <div className='recipe' style={this.state.clicked ? styleObj : null}>
                 <p>{this.props.recipe.title}</p>
                 <button onClick={this.clickHandler}>Like</button>

@@ -36,7 +36,7 @@ class RecipesContainer extends Component {
         return (
             <div id='recipes-container'>
                 <p>Recipes</p>
-                <RecipesList recipes={this.state.recipes}/>
+                <RecipesList recipes={this.state.recipes} user = {this.props.user}/>
             </div>
         );
     }
