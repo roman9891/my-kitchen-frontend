@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import RecipesList from "../Components/RecipesList"
+import {recipes} from '../recipeData'
 
-//const searchTerms = [`apple`, `eggs`, `flour`, `rice`]
 let renderCount = 0
+//let fetchCount = 0 used in commented out api fetch
 
 class RecipesContainer extends Component {
     state = {
         ingredientsSearchArray: [],
         ingredientsString: `apple`,
-        recipes: [{title: `test`, id: 1}, {title: `test2`, id: 2}]
+        recipes: []
     }
 
     convertToString = searchArray => {
@@ -25,14 +26,17 @@ class RecipesContainer extends Component {
         .then(recipes => this.setState({recipes: recipes}))
     }
 
-    // componentDidUpdate(prevProps) {
-    //     if (this.state.props !== prevProps) {
-    //         this.fetchRecipes()
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        if (this.props.searchTerms.length !== prevProps.searchTerms.length) {
+            //this.fetchRecipes()
+            this.fakeFetch() //swap to above code to use api
+        }
+    }
+
+    fakeFetch = () => this.setState({recipes: recipes})
     
     render() {
-        console.log(`rendered :`, renderCount += 1)
+        console.log(`rendered :`, renderCount += 1, recipes)
         return (
             <div id='recipes-container'>
                 <p>Recipes</p>
