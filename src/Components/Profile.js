@@ -16,7 +16,7 @@ render() {
             
          return (
             <div> 
-               <img id="avatar" src= {this.props.user.user.avatar}></img><br></br>
+               <img id="avatar" src= {this.props.user.user.avatar} alt="generic avatar"></img><br></br>
                <h1> {this.props.user.user.username}</h1> 
                #List of favorites    
             </div>
