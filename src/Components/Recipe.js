@@ -26,7 +26,7 @@ class Recipe extends Component {
                 },
             body: JSON.stringify({title: this.props.recipe.title,
                                   user_id: id,
-                                  ingredients: "will be soon",
+                                  ingredients: "apple",
                                   instructions: "will be soon"
              })
         }

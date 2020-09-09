@@ -29,3 +29,19 @@ div {
  a:hover:not(.active)  {
   color: blue;
 } 
+
+#list {
+  list-style-type: none; /* Remove bullets */
+}
+
+#profile-containers {
+  display: flex;
+}
+
+#favorites-list-container {
+  width: 50%;
+}
+
+#favorite-recipe-container {
+  width: 50%;
+}

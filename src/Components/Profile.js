@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
+import FavoritesList from "./FavoritesList";
+import FavoriteRecipe from './FavoriteRecipe'
 
 class Profile extends Component {
+     state={
+          recipe: ""
+     }
    
-    
-render() {
- 
-//    fetch('http://localhost:4000/api/v1/profile', {
-//         method: 'GET',
-//         headers: {
-//         Authorization: `Bearer ${this.props.token}`
-//         }
-//     })
-//     .then(response => response.json())
-//     .then(response => console.dir(response))
-            
+clickHandler = (fav) => this.setState({recipe: fav})
+   
+     render() {  
          return (
-            <div> 
-               <img id="avatar" src= {this.props.user.user.avatar}></img><br></br>
-               <h1> {this.props.user.user.username}</h1> 
-               #List of favorites    
-            </div>
+           <div>
+             <img id="avatar" src= {this.props.user.user.avatar}></img><br></br>
+             <h1> {this.props.user.user.username}</h1> 
+           
+                <div id="profile-containers">  
+                <FavoritesList user = {this.props.user} clickHandler = {this.clickHandler}/>  
+                <FavoriteRecipe  recipe = {this.state.recipe} />
+                </div>
+           </div>
          );
     }
 }

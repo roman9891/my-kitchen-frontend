@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Profile from "./Profile"
-
 
 class Login extends Component {
 
