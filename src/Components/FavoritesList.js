@@ -10,7 +10,7 @@ class FavoritesList extends Component {
   }
     
  list = () => this.state.favArray.map((fav) => 
-              <li key={fav.id} 
+              <li id = "hover-li-favorites"key={fav.id} 
                   onClick = { () => {this.props.clickHandler(fav)}} > 
                   {fav.title }
               </li>

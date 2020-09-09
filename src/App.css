@@ -45,3 +45,6 @@ div {
 #favorite-recipe-container {
   width: 50%;
 }
+#hover-li-favorites:hover {
+color: blue;
+}
