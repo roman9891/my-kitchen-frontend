@@ -12,7 +12,7 @@ clickHandler = (fav) => this.setState({recipe: fav})
      render() {  
          return (
            <div>
-             <img id="avatar" src= {this.props.user.user.avatar}></img><br></br>
+             <img id="avatar" src= {this.props.user.user.avatar} alt="generic avatar"></img><br></br>
              <h1> {this.props.user.user.username}</h1> 
            
                 <div id="profile-containers">  
