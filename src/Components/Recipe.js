@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
- const url = "http://localhost:4000/api/v1/users/"
-//  const id = this.props.user.user.id   # I moved this on line 17, because props are not defined outside of Recipe class
+ const url = `http://localhost:4000/api/v1/favorites` 
+//  const id = this.props.user.user.id   # I moved this on line 19 -- props were not defined outside of Recipe class
 
 class Recipe extends Component {
     state = {
@@ -15,18 +15,22 @@ class Recipe extends Component {
     }
 
     postFavoriteRecipe = () => {
-        
+       
      const id = this.props.user.user.id
-    
+     
         const config = {
             method: `POST`,
             headers: {
                 'Content-Type': 'application/json',
                 Accept: 'application/json'
                 },
-            body: JSON.stringify({favorites: this.props.recipe.title})
+            body: JSON.stringify({title: this.props.recipe.title,
+                                  user_id: id,
+                                  ingredients: "will be soon",
+                                  instructions: "will be soon"
+             })
         }
-        fetch(url+id, config)
+        fetch(url, config)
         .then(r => r.json())
         .then( console.log())
     }
@@ -36,7 +40,7 @@ class Recipe extends Component {
 
         const styleObj= {'color': 'blue'}
 
-        return ( 
+        return (
             <div className='recipe' style={this.state.clicked ? styleObj : null}>
                 <p>{this.props.recipe.title}</p>
                 <button onClick={this.clickHandler}>Like</button>
