@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import FavoritesList from "./FavoritesList";
 import FavoriteRecipe from './FavoriteRecipe'
+import ChangeAvatarForm from './ChangeAvatarForm'
 
 class Profile extends Component {
      state={
-          recipe: ""
+          recipe: "",
+          avatarClicked: false
      }
    
 clickHandler = (fav) => this.setState({recipe: fav})
+
+clickHandler = () => {this.setState({avatarClicked: !this.state.avatarClicked})
+}
    
      render() {  
          return (
            <div>
-             <img id="avatar" src= {this.props.user.user.avatar} alt="generic avatar"></img><br></br>
+             <img id="avatar" src= {this.props.avatar} alt="generic avatar"></img><br></br>
+             <button onClick={this.clickHandler}>Change Avatar</button>
+             {this.state.avatarClicked === true ? 
+                 <ChangeAvatarForm user = {this.props.user} avatarSubmitHandler = {event => this.props.avatarSubmitHandler(event)}/> : null }
              <h1> {this.props.user.user.username}</h1> 
            
                 <div id="profile-containers">  

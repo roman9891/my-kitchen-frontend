@@ -48,3 +48,7 @@ div {
 #hover-li-favorites:hover {
 color: blue;
 }
+#nav-bar-avatar {
+  width: 2%;
+  height: 2%;
+}
