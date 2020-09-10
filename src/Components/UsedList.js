@@ -7,8 +7,8 @@ class UsedList extends Component {
     
     render() {
         return (
-            <div>
-                {this.renderUsed()}
+            <div id='used-list'>
+                ingredients: {this.renderUsed()}
             </div>
         );
     }

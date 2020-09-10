@@ -1,5 +1,5 @@
 div {
-  border: 1px solid black
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #app-containers {
@@ -8,13 +8,42 @@ div {
 
 #ingredients-container {
   width: 50%;
+  border: 10px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 #recipes-container {
   width: 50%;
+  height: 80vh;
+  border: 10px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  overflow-y: scroll;
 }
+
+.recipe-title {
+  text-align: center;
+}
+
+.recipe-image {
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
 #login-component {
-  width: 20%
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  /* width: 20%; */
+  border: 10px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
 }
 
 #invalid {
@@ -51,4 +80,41 @@ color: blue;
 #nav-bar-avatar {
   width: 2%;
   height: 2%;
+}
+
+#navBar {
+  display: flex;
+  height: 10vh;
+  background-color: rgb(255, 180, 118);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.buttonHolder{ text-align: center; }
+
+#used-list {
+  border: 3px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.ingredient {
+  background-color: rgb(255, 180, 118);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border: hidden;
+  cursor: pointer;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(255, 180, 118);
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
 }
