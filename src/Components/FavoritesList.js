@@ -16,7 +16,6 @@ class FavoritesList extends Component {
               </li>
               )
 
-        // <Favorite key = {fav.id} recipe = {fav}/>
     render() { 
       
         return (
@@ -37,12 +36,3 @@ class FavoritesList extends Component {
 
 
 export default FavoritesList;
-
-// fetch( url +`${this.props.user.user.id}`, {
-//     method: 'GET',
-//     headers: {
-//     Authorization: `Bearer ${this.props.user.jwt}`
-//     }
-// //  }) {this.setState({
-//     favArray: response
-// })

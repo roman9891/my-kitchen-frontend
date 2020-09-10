@@ -5,8 +5,8 @@ class FavoriteRecipe extends Component {
         return ( 
             <div id="favorite-recipe-container">
               <h2>{this.props.recipe.title}</h2> 
-              <h4>{this.props.recipe.ingredients}</h4>
-              <h4>{this.props.recipe.instruction}</h4> 
+              <h6>{this.props.recipe.ingredients}</h6>
+              <p>{this.props.recipe.steps}</p> 
             </div>
         );
     }
