@@ -3,20 +3,23 @@ import Search from  "../Components/Search";
 import IngredientsList from "../Components/IngredientsList";
 import UsedList from '../Components/UsedList'
 
-const ingredientsSeeds = [
-    {
-        id: 0,
-        name: `apple`
-    },
-    {
-        id: 1,
-        name: `egg`
-    },
-    {
-        id: 2,
-        name: `milk`
-    }
-]
+// let fetchCount = 0
+
+// const ingredientsSeeds = [
+//     {
+//         id: 0,
+//         name: `apple`
+//     },
+//     {
+//         id: 1,
+//         name: `egg`
+//     },
+//     {
+//         id: 2,
+//         name: `milk`
+//     }
+// ]
+
 class IngredientsContainer extends Component {
 
     state = {
@@ -24,10 +27,8 @@ class IngredientsContainer extends Component {
         resultsArray: []
     }
 
-    searchHandler = event =>{ 
-        this.setState({
-           searchTerm: event.target.value
-        }, this.fetchIngredients)
+    searchHandler = form =>{ 
+        this.setState({searchTerm: form.search}, this.fetchIngredients)
    }
 
     fetchIngredients = () => {
@@ -42,8 +43,8 @@ class IngredientsContainer extends Component {
             <div id='ingredients-container'>
               <Search searchHandler = {this.searchHandler}/>
               <UsedList removeHandler={this.props.removeHandler} usedItems={this.props.searchTerms}/> 
-              <IngredientsList appHandler={this.props.appHandler} ingredients = {ingredientsSeeds}/>
-              {/* <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/> */}
+              {/* <IngredientsList appHandler={this.props.appHandler} ingredients = {ingredientsSeeds}/> */}
+              <IngredientsList appHandler={this.props.appHandler} ingredients = {this.state.resultsArray}/>
             </div>
         );
     }

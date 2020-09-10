@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
-import {instructions} from '../instructionsData'
+//import {instructions} from '../instructionsData'
 
  const url = `http://localhost:4000/api/v1/favorites`
- const instruction = instructions[1]
+ //const instruction = instructions[1]
 
 //  const id = this.props.user.user.id   # I moved this on line 19 -- props were not defined outside of Recipe class
 
 class Recipe extends Component {
     state = {
-        clicked: false
+        liked: false,
+        instructions: false,
+        steps: ``,
+        ingredients: ``
     }
 
     parseInstructions = (instructions) => {
@@ -23,10 +26,33 @@ class Recipe extends Component {
         return [parsedInstructions,[...ingredientsSet]]
     }
 
-    clickHandler = () => {
-        console.log(this.props.recipe)
-        this.setState({clicked: true}, () => console.log(this.state))
-        this.postFavoriteRecipe()
+    clickHandler = (e) => {
+        
+        if (e.target.matches(`#like-btn`)) {
+            this.setState({liked: true}, () => console.log(this.state))
+            this.postFavoriteRecipe()
+        }
+        
+        if (e.target.matches(`#instructions-btn`)) {
+            this.setState({instructions: !this.state.instructions}, () => console.log(this.state))
+            if (this.state.steps === ``) {this.fetchInstructions(this.props.recipe.id)}
+        }
+
+        if (e.target.matches(`#unlike-btn`)) {
+            this.setState({liked: false}, () => console.log(this.state))
+            this.deleteFavoriteRecipe()
+        }
+    }
+
+    fetchInstructions = id => {
+        fetch(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=81b17e72c9484724a29239484ef6b188`)
+        .then(r => r.json())
+        .then(instructionsArray => {
+            instructionsArray.forEach(instructionsObject => this.setState({
+                steps: this.parseInstructions(instructionsObject)[0],
+                ingredients: this.parseInstructions(instructionsObject)[1]
+            }, () => console.log(`from fetch: `,this.state)))
+        })
     }
 
     postFavoriteRecipe = () => {
@@ -40,8 +66,8 @@ class Recipe extends Component {
             body: JSON.stringify({
                 title: this.props.recipe.title,
                 user_id: id,
-                ingredients: ``,
-                instructions: "will be soon"
+                ingredients: `${this.state.ingredients}`,
+                instructions: `${this.state.steps}`
              })
         }
         
@@ -50,18 +76,36 @@ class Recipe extends Component {
         .then(console.log)
     }
 
+    deleteFavoriteRecipe = () => {
+        
+    }
+
 
     render() {
-        console.log(this.parseInstructions(instruction))
+        console.log(this.props.recipe)
 
         const styleObj= {'color': 'blue'}
 
         return (
-            <div className='recipe' style={this.state.clicked ? styleObj : null}>
-                <img src={this.props.recipe.image}></img>
+            <div className='recipe' style={this.state.liked ? styleObj : null}>
+                <img src={this.props.recipe.image} alt={this.props.recipe.title}></img>
                 <p>{this.props.recipe.title}</p>
-                <button onClick={this.clickHandler}>Like</button>
-                <button>Instructions</button>
+                
+                <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
+                {
+                    this.state.instructions ? 
+                    <p>
+                        {
+                            this.state.liked ? 
+                            <button id='unlike-btn' onClick={this.clickHandler}>unlike</button> : 
+                            <button id='like-btn' onClick={this.clickHandler}>Like</button>
+                        }
+                        <br/>
+                        {this.state.steps}
+                    </p> 
+                    : 
+                    null
+                }
             </div>
         );
     }
