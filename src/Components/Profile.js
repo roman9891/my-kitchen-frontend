@@ -11,16 +11,17 @@ class Profile extends Component {
    
 clickHandler = (fav) => this.setState({recipe: fav})
 
-clickHandler = () => {this.setState({avatarClicked: !this.state.avatarClicked})
+avatarClickHandler = () => {this.setState({avatarClicked: !this.state.avatarClicked})
 }
    
+avatarSubmitHandler = event => {this.setState({avatarClicked: false}); this.props.avatarSubmitHandler(event)}
      render() {  
          return (
            <div>
              <img id="avatar" src= {this.props.avatar} alt="generic avatar"></img><br></br>
-             <button onClick={this.clickHandler}>Change Avatar</button>
+             <button onClick={this.avatarClickHandler}>Change Avatar</button>
              {this.state.avatarClicked === true ? 
-                 <ChangeAvatarForm user = {this.props.user} avatarSubmitHandler = {event => this.props.avatarSubmitHandler(event)}/> : null }
+                 <ChangeAvatarForm user = {this.props.user} avatarSubmitHandler = {event => this.avatarSubmitHandler(event)}/> : null }
              <h1> {this.props.user.user.username}</h1> 
            
                 <div id="profile-containers">  

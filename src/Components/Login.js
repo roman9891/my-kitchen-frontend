@@ -26,6 +26,7 @@ class Login extends Component {
               <label>Avatar:</label>
               <input type="text"  name="avatar"></input>
               <input type="submit" value="Submit"></input>
+              <h4 id = "invalid">{this.props.error}</h4>
            </form> <br></br>
             </div>
             

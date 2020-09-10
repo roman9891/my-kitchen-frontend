@@ -44,7 +44,7 @@ class LoginContainer extends Component {
           
     fetch('http://localhost:4000/api/v1/users', options)
     .then(response => response.json())
-    .then(resp => this.setState({response: resp}))
+    .then(resp => {this.setState({response: resp}); console.log(resp)})
     
     }
 
@@ -55,14 +55,18 @@ class LoginContainer extends Component {
             return (<Fragment> <App user = {this.state.response} /> </Fragment>
         )}
         if (this.state.response.message)  {
-            return ( 
-                    <Fragment> <Login loginHandler = {this.loginHandler} message = {this.state.response.message} signUpHandler = {this.signUpHandler}/> </Fragment> 
+            return ( <Fragment> <Login loginHandler = {this.loginHandler} 
+                                       message = {this.state.response.message} 
+                                       signUpHandler = {this.signUpHandler}/> </Fragment> 
         )}
         if (this.state.response ==="" )  {
-            return (<Fragment><Login loginHandler = {this.loginHandler} signUpHandler = {this.signUpHandler}/></Fragment>
+            return (<Fragment><Login loginHandler = {this.loginHandler} 
+                                     signUpHandler = {this.signUpHandler}/></Fragment>
         )}
         if (this.state.response.error )  {
-            return (<Fragment><Login loginHandler = {this.loginHandler} signUpHandler = {this.signUpHandler}/></Fragment>
+            return (<Fragment><Login loginHandler = {this.loginHandler} 
+                                      signUpHandler = {this.signUpHandler}
+                                      error={"Username is taken"}/></Fragment>
         )}       
     }   
 }
