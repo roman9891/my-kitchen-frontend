@@ -3,7 +3,7 @@ import RecipesList from "../Components/RecipesList"
 import {recipes} from '../recipeData'
 
 let renderCount = 0
-//let fetchCount = 0 used in commented out api fetch
+let fetchCount = 0 //used in commented out api fetch
 
 class RecipesContainer extends Component {
     state = {
@@ -24,12 +24,13 @@ class RecipesContainer extends Component {
         fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(this.props.searchTerms)}`)
         .then(r => r.json())
         .then(recipes => this.setState({recipes: recipes}))
+        console.log(`fetch:`, fetchCount += 1)
     }
 
     componentDidUpdate(prevProps) {
         if (this.props.searchTerms.length !== prevProps.searchTerms.length) {
-            //this.fetchRecipes()
-            this.fakeFetch() //swap to above code to use api
+            this.fetchRecipes() //uncomment fetchCount at top
+            //this.fakeFetch() //swap to above code to use api
         }
     }
 

@@ -8,7 +8,10 @@ import {instructions} from '../instructionsData'
 
 class Recipe extends Component {
     state = {
-        clicked: false
+        liked: false,
+        instructions: false,
+        steps: ``,
+        ingredients: ``
     }
 
     parseInstructions = (instructions) => {
@@ -23,10 +26,28 @@ class Recipe extends Component {
         return [parsedInstructions,[...ingredientsSet]]
     }
 
-    clickHandler = () => {
-        console.log(this.props.recipe)
-        this.setState({clicked: true}, () => console.log(this.state))
-        this.postFavoriteRecipe()
+    clickHandler = (e) => {
+        
+        if (e.target.matches(`#like-btn`)) {
+            this.setState({liked: true}, () => console.log(this.state))
+            this.postFavoriteRecipe()
+        }
+        
+        if (e.target.matches(`#instructions-btn`)) {
+            this.setState({instructions: !this.state.instructions}, () => console.log(this.state))
+            if (this.state.steps === ``) {this.fetchInstructions(this.props.recipe.id)}
+        }
+    }
+
+    fetchInstructions = id => {
+        fetch(`https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=81b17e72c9484724a29239484ef6b188`)
+        .then(r => r.json())
+        .then(instructionsArray => {
+            instructionsArray.forEach(instructionsObject => this.setState({
+                steps: this.parseInstructions(instructionsObject)[0],
+                ingredients: this.parseInstructions(instructionsObject)[1]
+            }, () => console.log(`from fetch: `,this.state)))
+        })
     }
 
     postFavoriteRecipe = () => {
@@ -52,16 +73,17 @@ class Recipe extends Component {
 
 
     render() {
-        console.log(this.parseInstructions(instruction))
+        //console.log(`recipe render`)
 
         const styleObj= {'color': 'blue'}
 
         return (
-            <div className='recipe' style={this.state.clicked ? styleObj : null}>
+            <div className='recipe' style={this.state.liked ? styleObj : null}>
                 <img src={this.props.recipe.image}></img>
                 <p>{this.props.recipe.title}</p>
-                <button onClick={this.clickHandler}>Like</button>
-                <button>Instructions</button>
+                <button id='like-btn' onClick={this.clickHandler}>Like</button>
+                <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
+                {this.state.instructions ? <p>{this.state.steps}</p> : null}
             </div>
         );
     }
