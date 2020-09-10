@@ -81,9 +81,9 @@ class Recipe extends Component {
             <div className='recipe' style={this.state.liked ? styleObj : null}>
                 <img src={this.props.recipe.image}></img>
                 <p>{this.props.recipe.title}</p>
-                <button id='like-btn' onClick={this.clickHandler}>Like</button>
+                
                 <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
-                {this.state.instructions ? <p>{this.state.steps}</p> : null}
+                {this.state.instructions ? <p><button id='like-btn' onClick={this.clickHandler}>Like</button>{this.state.steps}</p> : null}
             </div>
         );
     }
