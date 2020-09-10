@@ -27,20 +27,21 @@ class RecipesContainer extends Component {
         console.log(`fetch:`, fetchCount += 1)
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.searchTerms.length !== prevProps.searchTerms.length) {
-            this.fetchRecipes() //uncomment fetchCount at top
-            //this.fakeFetch() //swap to above code to use api
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if (this.props.searchTerms.length !== prevProps.searchTerms.length) {
+    //         this.fetchRecipes() //uncomment fetchCount at top
+    //         this.fakeFetch() //swap to above code to use api
+    //     }
+    // }
 
-    fakeFetch = () => this.setState({recipes: recipes})
+    //fakeFetch = () => this.setState({recipes: recipes})
+    clickHandler = () => this.fetchRecipes()
     
     render() {
         console.log(`rendered :`, renderCount += 1, recipes)
         return (
             <div id='recipes-container'>
-                <p>Recipes</p>
+                <p>Recipes <button onClick={this.clickHandler}>Search</button></p>
                 <RecipesList recipes={this.state.recipes} user = {this.props.user}/>
             </div>
         );

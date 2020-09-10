@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import {instructions} from '../instructionsData'
+//import {instructions} from '../instructionsData'
 
  const url = `http://localhost:4000/api/v1/favorites`
- const instruction = instructions[1]
+ //const instruction = instructions[1]
 
 //  const id = this.props.user.user.id   # I moved this on line 19 -- props were not defined outside of Recipe class
 
@@ -37,6 +37,11 @@ class Recipe extends Component {
             this.setState({instructions: !this.state.instructions}, () => console.log(this.state))
             if (this.state.steps === ``) {this.fetchInstructions(this.props.recipe.id)}
         }
+
+        if (e.target.matches(`#unlike-btn`)) {
+            this.setState({liked: false}, () => console.log(this.state))
+            this.deleteFavoriteRecipe()
+        }
     }
 
     fetchInstructions = id => {
@@ -61,8 +66,8 @@ class Recipe extends Component {
             body: JSON.stringify({
                 title: this.props.recipe.title,
                 user_id: id,
-                ingredients: ``,
-                instructions: "will be soon"
+                ingredients: `${this.state.ingredients}`,
+                instructions: `${this.state.steps}`
              })
         }
         
@@ -71,19 +76,36 @@ class Recipe extends Component {
         .then(console.log)
     }
 
+    deleteFavoriteRecipe = () => {
+        
+    }
+
 
     render() {
-        //console.log(`recipe render`)
+        console.log(this.props.recipe)
 
         const styleObj= {'color': 'blue'}
 
         return (
             <div className='recipe' style={this.state.liked ? styleObj : null}>
-                <img src={this.props.recipe.image}></img>
+                <img src={this.props.recipe.image} alt={this.props.recipe.title}></img>
                 <p>{this.props.recipe.title}</p>
                 
                 <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
-                {this.state.instructions ? <p><button id='like-btn' onClick={this.clickHandler}>Like</button>{this.state.steps}</p> : null}
+                {
+                    this.state.instructions ? 
+                    <p>
+                        {
+                            this.state.liked ? 
+                            <button id='unlike-btn' onClick={this.clickHandler}>unlike</button> : 
+                            <button id='like-btn' onClick={this.clickHandler}>Like</button>
+                        }
+                        <br/>
+                        {this.state.steps}
+                    </p> 
+                    : 
+                    null
+                }
             </div>
         );
     }
