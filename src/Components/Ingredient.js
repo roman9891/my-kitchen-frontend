@@ -10,10 +10,11 @@ class Ingredient extends Component {
     }
     
     render() {
+        console.log(this.props.ingredient.image)
         return (
-            <div className='ingredient'>
-                <p>{this.props.ingredient.name}</p>
-                <button onClick={this.clickHandler}>use</button>
+            <div >
+                <img src={this.props.ingredient.image} alt=''></img>
+                <button className='ingredient' onClick={this.clickHandler}>{this.props.ingredient.name}</button>
             </div>
         );
     }

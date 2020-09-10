@@ -3,7 +3,7 @@ import './App.css';
 import IngredientsContainer from "./Containers/IngredientsContainer";
 import RecipesContainer from "./Containers/RecipesContainer";
 import NavBar from './Components/NavBar'
-import Header from "./Components/Header"
+//import Header from "./Components/Header"
 import Profile from "./Components/Profile"
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 
@@ -58,7 +58,7 @@ class App extends React.Component {
     return(
     <div id='app'>
       <div>
-        <Header/>
+        {/* <Header/> */}
           <Router> 
              <NavBar avatar={this.state.avatar}/> 
                 <Route exact path = '/profile' render = {() => 
