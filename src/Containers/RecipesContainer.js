@@ -41,7 +41,7 @@ class RecipesContainer extends Component {
         console.log(`rendered :`, renderCount += 1, recipes)
         return (
             <div id='recipes-container'>
-                <p>Recipes <button onClick={this.clickHandler}>Search</button></p>
+                <button onClick={this.clickHandler}>Find Recipes</button>
                 <RecipesList recipes={this.state.recipes} user = {this.props.user}/>
             </div>
         );

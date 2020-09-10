@@ -19,7 +19,7 @@ class Recipe extends Component {
         let ingredientsSet = new Set()
 
         instructions['steps'].forEach(step => {
-            parsedInstructions += `${step['number']}: ${step['step']} \n`
+            parsedInstructions += `#${step['number']}: ${step['step']} \n\n`
             step['ingredients'].forEach(ingredient => ingredientsSet.add(ingredient.name))
         })
         
@@ -80,6 +80,15 @@ class Recipe extends Component {
         
     }
 
+    formatSteps = stepsString => {
+        //let formattedString = ``
+        const stepsArray = stepsString.split(`#`)
+        
+        console.log(stepsArray)
+
+        return stepsArray.map(step => <p>{step}</p>)
+    }
+
 
     render() {
         console.log(this.props.recipe)
@@ -88,8 +97,8 @@ class Recipe extends Component {
 
         return (
             <div className='recipe' style={this.state.liked ? styleObj : null}>
-                <img src={this.props.recipe.image} alt={this.props.recipe.title}></img>
-                <p>{this.props.recipe.title}</p>
+                <img className='recipe-image' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
+                <p className='recipe-title'>{this.props.recipe.title}</p>
                 
                 <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
                 {
@@ -101,7 +110,7 @@ class Recipe extends Component {
                             <button id='like-btn' onClick={this.clickHandler}>Like</button>
                         }
                         <br/>
-                        {this.state.steps}
+                        {this.formatSteps(this.state.steps)}
                     </p> 
                     : 
                     null

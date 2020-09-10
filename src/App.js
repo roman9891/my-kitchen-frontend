@@ -39,7 +39,7 @@ class App extends React.Component {
     return(
     <div id='app'>
       <div>
-        <Header/>
+        {/* <Header/> */}
           <Router> 
              <NavBar/> 
                 <Route exact path = '/profile' render = {() => 
