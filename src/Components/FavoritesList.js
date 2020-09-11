@@ -20,7 +20,7 @@ class FavoritesList extends Component {
       
         return (
             <div id="favorites-list-container">
-              <h3>My favorite recipes</h3>
+              <h3>Favorite Recipes</h3>
               <ul id="list">{this.list()}</ul>
             </div>
         )
