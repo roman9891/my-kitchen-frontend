@@ -55,8 +55,8 @@ div {
 }
 
 #avatar {
-  width: 10%;
-  height: 10%;
+  width: 20vh;
+  height: 15vh;
 }
 
  a:hover:not(.active)  {
@@ -73,10 +73,19 @@ div {
 
 #favorites-list-container {
   width: 50%;
+  border: 3px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  height: 60vh;
 }
 
 #favorite-recipe-container {
   width: 50%;
+  border: 3px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
 }
 #hover-li-favorites:hover {
 color: blue;
@@ -154,4 +163,18 @@ color: blue;
   display: flex;
   flex-flow: column;
   align-self: flex-end;
+}
+
+#profile-avatar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 3px solid lightgreen;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#change-avatar-btn {
+  height: 3vh;
 }

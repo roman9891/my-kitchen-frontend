@@ -16,20 +16,25 @@ avatarClickHandler = () => {this.setState({avatarClicked: !this.state.avatarClic
    
 avatarSubmitHandler = event => {this.setState({avatarClicked: false}); this.props.avatarSubmitHandler(event)}
      render() {  
-         return (
-           <div>
-             <img id="avatar" src= {this.props.avatar} alt="generic avatar"></img><br></br>
-             <button onClick={this.avatarClickHandler}>Change Avatar</button>
-             {this.state.avatarClicked === true ? 
-                 <ChangeAvatarForm user = {this.props.user} avatarSubmitHandler = {event => this.avatarSubmitHandler(event)}/> : null }
-             <h1> {this.props.user.user.username}</h1> 
-           
-                <div id="profile-containers">  
-                <FavoritesList user = {this.props.user} clickHandler = {this.clickHandler}/>  
-                <FavoriteRecipe  recipe = {this.state.recipe} />
-                </div>
-           </div>
-         );
+          return (
+               <div id='profile-container'>
+                    <div id='profile-avatar-container'>
+                        
+                              <img id="avatar" src= {this.props.avatar} alt="generic avatar"></img>
+                              <div><div>Username: {this.props.user.user.username}</div> 
+                              <button id='change-avatar-btn' onClick={this.avatarClickHandler}>Change Avatar</button></div>
+                              {this.state.avatarClicked === true ? 
+                              <ChangeAvatarForm user = {this.props.user} avatarSubmitHandler = {event => this.avatarSubmitHandler(event)}/> : null }
+                      
+                    </div>
+                    
+                    
+                    <div id="profile-containers">  
+                    <FavoritesList user = {this.props.user} clickHandler = {this.clickHandler}/>  
+                    <FavoriteRecipe  recipe = {this.state.recipe} />
+                    </div>
+               </div>
+          );
     }
 }
 
