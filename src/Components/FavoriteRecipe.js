@@ -4,14 +4,19 @@ class FavoriteRecipe extends Component {
     
     
     render() {
-        //  const stepsArray = this.props.recipe.instructions.split('#')  //error: Can not read property of underfined.
-        //  let instructions = stepsArray.map((step) => <p>{step}</p>)
+           const stepsArray = `${this.props.recipe.instructions}`.split('#')  
+           let instructions = stepsArray.map((step) => <p>{step}</p>)
 
-        return ( console.log( this.props.recipe.instructions),
+        return ( 
             <div id="favorite-recipe-container">
-              <h2>{this.props.recipe.title}</h2> 
-              <h6>{this.props.recipe.ingredients}</h6>
-              <p> {this.props.recipe.instructions}</p> 
+              {this.props.recipe === "" ? null : 
+                <>
+                 <img src={this.props.recipe.image} alt="image"></img>  
+                 <h2>{this.props.recipe.title}</h2> 
+                 <h6>{this.props.recipe.ingredients}</h6>
+                 <h6> {instructions}</h6>
+               </>
+              }
             </div>
         );
     }

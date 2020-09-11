@@ -67,7 +67,8 @@ class Recipe extends Component {
                 title: this.props.recipe.title,
                 user_id: id,
                 ingredients: `${this.state.ingredients}`,
-                instructions: `${this.state.steps}`
+                instructions: `${this.state.steps}`,
+                image: `${this.props.recipe.image}`
              })
         }
         
