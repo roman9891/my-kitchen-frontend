@@ -48,11 +48,14 @@ class LoginContainer extends Component {
     
     }
 
-    
+    logoutHandler = () => {this.setState({response: ""})
+
+    }
 
     render() {
         if (this.state.response.user)  {
-            return (<Fragment> <App user = {this.state.response} /> </Fragment>
+            return (<Fragment> <App user = {this.state.response}
+                                    logoutHandler = {this.logoutHandler} /> </Fragment>
         )}
         if (this.state.response.message)  {
             return ( <Fragment> <Login loginHandler = {this.loginHandler} 

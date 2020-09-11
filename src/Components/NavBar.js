@@ -15,14 +15,11 @@ class NavBar extends Component {
                     </span>
                 </NavLink>
                 <NavLink className = "nav-link" to='/profile' exact > 
-                <img id = "nav-bar-avatar" src={this.props.avatar} alt=''></img>
-                    {/* <div id='avatar-container'>
-                        
-                        <div id='profile-link'>{this.props.username}</div> 
-                    </div>
-                     
-                    &nbsp; */}
+                   <img id = "nav-bar-avatar" src={this.props.avatar} alt=''></img>     
                 </NavLink> 
+                <NavLink className = "nav-link" to='/' exact onClick={this.props.logoutHandler}>
+                Logout
+                </NavLink>
             </div>
         );
     }

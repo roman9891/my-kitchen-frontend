@@ -60,7 +60,7 @@ class App extends React.Component {
       <div>
         {/* <Header/> */}
           <Router> 
-             <NavBar avatar={this.state.avatar}/> 
+             <NavBar avatar={this.state.avatar} logoutHandler = {this.props.logoutHandler}/> 
                 <Route exact path = '/profile' render = {() => 
                   <Profile user = {this.props.user} 
                            avatar = {this.state.avatar} 
