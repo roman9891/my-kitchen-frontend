@@ -21,7 +21,7 @@ class RecipesContainer extends Component {
     }
 
     fetchRecipes = () => {
-        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(this.props.searchTerms)}`)
+        fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=81b17e72c9484724a29239484ef6b188&ingredients=${this.convertToString(this.props.searchTerms)}&ranking=1`)
         .then(r => r.json())
         .then(recipes => this.setState({recipes: recipes}))
         console.log(`fetch:`, fetchCount += 1)
@@ -41,7 +41,8 @@ class RecipesContainer extends Component {
         console.log(`rendered :`, renderCount += 1, recipes)
         return (
             <div id='recipes-container'>
-                <button onClick={this.clickHandler}>Find Recipes</button>
+                <div id='search-recipe-btn' className="buttonHolder"><button onClick={this.clickHandler}>Find Recipes</button></div>
+                
                 <RecipesList recipes={this.state.recipes} user = {this.props.user}/>
             </div>
         );

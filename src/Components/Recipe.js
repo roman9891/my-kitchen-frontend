@@ -81,12 +81,9 @@ class Recipe extends Component {
     }
 
     formatSteps = stepsString => {
-        //let formattedString = ``
         const stepsArray = stepsString.split(`#`)
-        
-        console.log(stepsArray)
 
-        return stepsArray.map(step => <p>{step}</p>)
+        return stepsArray.map((step,i) => <div key={i}>{step}</div>)
     }
 
 
@@ -103,15 +100,16 @@ class Recipe extends Component {
                 <button id='instructions-btn' onClick={this.clickHandler}>Instructions</button>
                 {
                     this.state.instructions ? 
-                    <p>
+                    <div>
                         {
                             this.state.liked ? 
                             <button id='unlike-btn' onClick={this.clickHandler}>unlike</button> : 
                             <button id='like-btn' onClick={this.clickHandler}>Like</button>
                         }
                         <br/>
-                        {this.formatSteps(this.state.steps)}
-                    </p> 
+                        {(this.state.steps === '') ? 'Sorry. No Instructions.' : this.formatSteps(this.state.steps)}
+                        {/* {this.formatSteps(this.state.steps)} */}
+                    </div> 
                     : 
                     null
                 }
