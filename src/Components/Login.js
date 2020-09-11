@@ -21,8 +21,8 @@ class Login extends Component {
                 <div className="buttonHolder">
                   <input id='login-btn' className='login-btns' type="submit" value="Submit"></input>
                 </div>
-                <h4 id = "invalid">{this.props.message}</h4>
               </form>
+              <h4 id = "invalid">{this.props.message}</h4>
               <br/>
               <h1> Sign up</h1>
               <form onSubmit = {event => this.props.signUpHandler(event)}>
