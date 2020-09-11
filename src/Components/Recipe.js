@@ -11,7 +11,8 @@ class Recipe extends Component {
         liked: false,
         instructions: false,
         steps: ``,
-        ingredients: ``
+        ingredients: ``,
+        favoriteId: 0
     }
 
     parseInstructions = (instructions) => {
@@ -74,11 +75,15 @@ class Recipe extends Component {
         
         fetch(url, config)
         .then(r => r.json())
-        .then(console.log)
+        .then(favoriteObject => this.setState({favoriteId: favoriteObject.favorite.id}))
     }
 
     deleteFavoriteRecipe = () => {
-        
+        console.log(this.state.favoriteId)
+        fetch(`http://localhost:4000/api/v1/favorites/${this.state.favoriteId}`,{
+            method: `DELETE`,
+            header: {'content-type': `application/json`}
+        })
     }
 
     formatSteps = stepsString => {
@@ -89,12 +94,8 @@ class Recipe extends Component {
 
 
     render() {
-        console.log(this.props.recipe)
-
-        const styleObj= {'color': 'blue'}
-
         return (
-            <div className='recipe' style={this.state.liked ? styleObj : null}>
+            <div className='recipe' >
                 <img className='recipe-image' src={this.props.recipe.image} alt={this.props.recipe.title}></img>
                 <p className='recipe-title'>{this.props.recipe.title}</p>
                 
@@ -109,7 +110,6 @@ class Recipe extends Component {
                         }
                         <br/>
                         {(this.state.steps === '') ? 'Sorry. No Instructions.' : this.formatSteps(this.state.steps)}
-                        {/* {this.formatSteps(this.state.steps)} */}
                     </div> 
                     : 
                     null
