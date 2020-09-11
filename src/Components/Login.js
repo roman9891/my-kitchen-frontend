@@ -7,7 +7,8 @@ class Login extends Component {
         return (
           
             <div id = 'login-component'>
-              <h1> Log in</h1>
+              <img id='login-logo' src='https://www.freelogodesign.org/file/app/client/thumb/7491f520-10aa-41e7-9c5c-4b2fe3d2954d_200x200.png?1599825946859'></img>
+              <p>Log in</p>
               {/* <br/> */}
               <form onSubmit = {event => this.props.loginHandler(event)}>
                 <label>User name:</label>
@@ -24,7 +25,7 @@ class Login extends Component {
               </form>
               <h4 id = "invalid">{this.props.message}</h4>
               <br/>
-              <h1> Sign up</h1>
+              <p> Sign up</p>
               <form onSubmit = {event => this.props.signUpHandler(event)}>
                   <label>User name:</label>
                   <br/>
