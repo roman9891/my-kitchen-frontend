@@ -11,7 +11,7 @@ class FavoriteRecipe extends Component {
             <div id="favorite-recipe-container">
               {this.props.recipe === "" ? null : 
                 <>
-                 <img src={this.props.recipe.image} alt="image"></img>  
+                 <img src={this.props.recipe.image} alt="chef icon"></img>  
                  <h2>{this.props.recipe.title}</h2> 
                  <h6>{this.props.recipe.ingredients}</h6>
                  <h6> {instructions}</h6>
