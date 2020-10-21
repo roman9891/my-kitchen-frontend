@@ -22,7 +22,7 @@ class LoginContainer extends Component {
             })
         }
             
-    fetch('http://localhost:4000/api/v1/login', options)  // got toket in response !
+    fetch('https://my-kitchen-frontend.herokuapp.com/api/v1/login', options)  // got toket in response !
     .then(response => response.json())
     .then(resp => { this.setState({response: resp})})                    
     }
@@ -42,7 +42,7 @@ class LoginContainer extends Component {
                  })
       }
           
-    fetch('http://localhost:4000/api/v1/users', options)
+    fetch('https://my-kitchen-frontend.herokuapp.com/api/v1/users', options)
     .then(response => response.json())
     .then(resp => {this.setState({response: resp}); console.log(resp)})
     

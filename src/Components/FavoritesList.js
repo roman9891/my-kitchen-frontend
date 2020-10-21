@@ -26,7 +26,7 @@ class FavoritesList extends Component {
         )
     }
   componentDidMount(){
-    fetch(`http://localhost:4000/api/v1/users/${this.props.user.user.id}`)
+    fetch(`https://my-kitchen-frontend.herokuapp.com/api/v1/users/${this.props.user.user.id}`)
    .then(response => response.json())
    .then(response =>{this.setState({ favArray: response.favorites })
     })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 //import {instructions} from '../instructionsData'
 
- const url = `http://localhost:4000/api/v1/favorites`
+ const url = `https://my-kitchen-frontend.herokuapp.com/api/v1/favorites`
  //const instruction = instructions[1]
 
 //  const id = this.props.user.user.id   # I moved this on line 19 -- props were not defined outside of Recipe class
@@ -80,7 +80,7 @@ class Recipe extends Component {
 
     deleteFavoriteRecipe = () => {
         console.log(this.state.favoriteId)
-        fetch(`http://localhost:4000/api/v1/favorites/${this.state.favoriteId}`,{
+        fetch(`https://my-kitchen-frontend.herokuapp.com/api/v1/favorites/${this.state.favoriteId}`,{
             method: `DELETE`,
             header: {'content-type': `application/json`}
         })

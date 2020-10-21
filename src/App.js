@@ -45,7 +45,7 @@ class App extends React.Component {
                     })
                   }
     
-     fetch(`http://localhost:4000/api/v1/users/${this.props.user.user.id}`, options)
+     fetch(`https://my-kitchen-frontend.herokuapp.com/api/v1/users/${this.props.user.user.id}`, options)
      .then(response => response.json())
      .then (resp => {this.setState({avatar: resp.user.avatar}); console.log("resp:", resp); console.log("state:", this.state.avatar)
      });
