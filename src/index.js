@@ -5,11 +5,6 @@ import './index.css';
 import LoginContainer from "./Containers/LoginContainer";
 import * as serviceWorker from './serviceWorker';
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Our app is running on port ${ PORT }`);
-});
-
 ReactDOM.render(
   <React.StrictMode>
     <LoginContainer/>
