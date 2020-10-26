@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './src/index.css';
-import LoginContainer from "./src/Containers/LoginContainer";
-import * as serviceWorker from './src/serviceWorker';
+import './index.css';
+import LoginContainer from "./Containers/LoginContainer";
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
