@@ -12,10 +12,10 @@
     "react-scripts": "3.4.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "build": "yarn --cwd my-kitchen-frontend install && yarn --cwd my-kitchen-frontend build",
+    "deploy": "cp -a frontend/build/. public/",
+    "heroku-postbuild": "yarn build && yarn deploy"
   },
   "eslintConfig": {
     "extends": "react-app"
